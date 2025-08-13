@@ -25,8 +25,10 @@ int main() {
         }
         contador++;
     }
-    cout << "\nQuantidade de aprovados: " << apr << endl;
+     cout << "\nQuantidade de aprovados: " << apr << " / " << contador << endl;
+    
     
     
     return 0;
+
 }
