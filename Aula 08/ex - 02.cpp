@@ -1,41 +1,54 @@
 #include <iostream>
-
 using namespace std;
 
-int main(){
-    string gabOfc; int numero, nota[100];
-    
+void verifica(string &gab) {
+    while (gab.length() != 5) {
+        cout << "Quantidade errada de alternativas! Digite de novo" << endl;
+        cout << "Digite o gabarito: ";
+        cin >> gab;
+    }
+
+    for (int i = 0; i < gab.length(); i++) {
+        while (gab[i] != 'a' && gab[i] != 'b' && gab[i] != 'c' && gab[i] != 'd') {
+            cout << "Alternativa invalida encontrada: " << gab[i] << endl;
+            cout << "Digite a alternativa: ";
+            cin >> gab[i];
+        }
+    }
+}
+
+int main() {
+    string gabOfc, gab;
+    int num;
+
     cout << "Informe o gabarito: ";
     cin >> gabOfc;
+    verifica(gabOfc);
 
-    if (gabOfc.length() > 5){
-        cout << "Gabarito invalido!" << endl;
-        return 1;
-    }
-
-    for(int i = 0; i < 5; i++){
-        char alt = gabOfc[i];
-
-        if(alt != 'a' || alt != 'b' || alt != 'c' || alt != 'd'){
-            cout << "Gabarito invalido!" << endl;
-            return 1;
-        }
-    }
-    
-    while(numero != 9999){
-        string resposta;
-
-        cout << "\nDados do aluno: " << endl;
+    while (true) {
+        cout << "Dados do Aluno: " << endl;
         cout << "Numero: ";
-        cin >> numero;
-        cout << "Resposta: ";
-        cin >> resposta;
+        cin >> num;
 
-        for (int i = 0; i < 5; i++){
-            if(gabOfc[i] == resposta[i]){
-               
+        if (num == 9999) {
+            break;
+        }
+        if (num < 0) {
+            cout << "Numero de aluno invalido!" << endl;
+            continue;
+        }
+
+        cout << "Resposta: ";
+        cin >> gab;
+        verifica(gab);
+
+        int acertos = 0;
+        for (int i = 0; i < 5; i++) {
+            if (gab[i] == gabOfc[i]) {
+                acertos++;
             }
         }
+        cout << "O aluno numero " << num << " acertou " << acertos << " de 5\n";
     }
-    
+    return 0;
 }
