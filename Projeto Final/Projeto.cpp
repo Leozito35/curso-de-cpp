@@ -211,9 +211,16 @@ void addEstoque(vector<Produto> &estoque) {
     string nomeBusca; int SomaQtd;
     cout << "Digite o nome do produto: ";
     getline(cin, nomeBusca);
+    
+    do {
+        cout << "Quantidade para adicionar no estoque: ";
+        cin >> SomaQtd;
 
-    cout << "Quantidade para adicionar no estoque: ";
-    cin >> SomaQtd;
+        if (SomaQtd < 0){
+            cout << "Erro! Digite um valor positivo!" << endl;
+        }
+    } while (SomaQtd < 0);
+
 
     for (auto &a : estoque){
         if(a.getNome() == nomeBusca){
