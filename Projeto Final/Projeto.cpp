@@ -343,16 +343,16 @@ void salvarDados(vector<Produto> &estoque, vector<Venda> &vendas){
     cout << "Dados do estoque salvos com sucesso!" << endl;
     
     //salvar vendas
-    ofstream arquivoVendas("vendas.txt"); // CORREÇÃO: ; adicionado
+    ofstream arquivoVendas("vendas.txt");
     if (!arquivoVendas.is_open()){
         cout << "Erro ao abrir o arquivo para salvar!\n";
         return;
     }
     
     for (const auto &venda : vendas){
-        arquivoVendas << venda.getNome() << "," << venda.getQtdVendida() << "," << venda.getValor() << "\n"; // CORREÇÃO: linha completa
+        arquivoVendas << venda.getNome() << "," << venda.getQtdVendida() << "," << venda.getValor() << "\n";
     }
-    arquivoVendas.close(); // CORREÇÃO: arquivoVendas
+    arquivoVendas.close();
     cout << "Dados de vendas salvos com sucesso!" << endl;
 }
 void carregarDados(vector<Produto> &estoque, vector<Venda> &vendas){
